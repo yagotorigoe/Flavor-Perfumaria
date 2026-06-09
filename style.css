@@ -1,0 +1,126 @@
+/* ========================================== */
+/* 1. CONFIGURAÇÕES GERAIS E RESET            */
+/* ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========================================== */
+/* 2. CABEÇALHO (HEADER)                      */
+/* ========================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #1a1a1a; 
+    color: #ffffff;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none; 
+    gap: 30px; 
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none; 
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* ========================================== */
+/* 3. ÁREA DE DESTAQUE (BANNER)               */
+/* ========================================== */
+.banner {
+    height: 70vh;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
+
+.banner h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #333333;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* ========================================== */
+/* 4. VITRINE E PRODUTOS (GRADE)              */
+/* ========================================== */
+.vitrine {
+    padding: 60px 50px; 
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.vitrine h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333333;
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; 
+}
+
+.cartao {
+    border: 1px solid #e0e0e0; 
+    padding: 20px;
+    border-radius: 8px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; 
+}
+
+.imagem-falsa {
+    width: 100%;
+    height: 220px;
+    background-color: #f4ece4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+}
+
+.preco {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+}
+
+/* ========================================== */
+/* 5. BOTÕES PADRÃO                           */
+/* ========================================== */
+.cartao button {
+    width: 100%; 
+    padding: 12px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s; 
+}
+
+.cartao button:hover {
+    background-color: #444444;
+}
