@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Carrinho | Flavor Perfumaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h2>Flavor</h2>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Masculinos</a></li>
+                <li><a href="#">Femininos</a></li>
+                <li><a href="#">Marcas</a></li>
+            </ul>
+        </nav>
+        <a href="carrinho.html" class="carrinho" style="text-decoration: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span>Carrinho (0)</span>
+        </a>
+    </header>
+
+    <main class="container-carrinho">
+        <h1 style="margin-bottom: 20px;">Seu Carrinho de Compras</h1>
+        <p id="mensagem-vazio">Seu carrinho está vazio no momento.</p>
+        
+        <div class="itens-carrinho"></div>
+    </main>
+
+    <footer>
+        <div class="footer-base">
+            <p>&copy; 2026 Flavor Perfumaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

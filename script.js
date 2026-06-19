@@ -70,3 +70,67 @@ if (produtoEscolhido) {
     notasOlfativas[2].innerText = produtoEscolhido.notas.coracao;
     notasOlfativas[3].innerText = produtoEscolhido.notas.fundo;
 }
+
+// Sincroniza o contador do cabeçalho com os dados persistidos no LocalStorage
+function atualizarContadorCarrinho() {
+    const carrinhoNaMemoria = JSON.parse(localStorage.getItem("carrinhoFlavor")) || [];
+    const spanCarrinho = document.querySelector(".carrinho span");
+    
+    if (spanCarrinho) {
+        spanCarrinho.innerText = `Carrinho (${carrinhoNaMemoria.length})`;
+    }
+}
+
+atualizarContadorCarrinho();
+
+// Gerencia a adição de novos itens ao carrinho na página de detalhes do produto
+const botaoComprar = document.querySelector(".botao-comprar-grande");
+
+if (botaoComprar && produtoEscolhido) {
+    botaoComprar.addEventListener("click", () => {
+        let carrinhoNaMemoria = JSON.parse(localStorage.getItem("carrinhoFlavor")) || [];
+        carrinhoNaMemoria.push(produtoEscolhido);
+        
+        localStorage.setItem("carrinhoFlavor", JSON.stringify(carrinhoNaMemoria));
+        atualizarContadorCarrinho();
+        
+        alert(`${produtoEscolhido.nome} foi adicionado ao carrinho!`);
+    });
+}
+
+// ==========================================
+// RENDERIZAÇÃO DA PÁGINA DO CARRINHO
+// ==========================================
+const containerCarrinho = document.querySelector(".itens-carrinho");
+const mensagemVazio = document.getElementById("mensagem-vazio");
+
+// Só roda se estivermos na página do carrinho
+if (containerCarrinho) {
+    let carrinhoNaMemoria = JSON.parse(localStorage.getItem("carrinhoFlavor")) || [];
+
+    // Verifica se a mochila tem algum item dentro
+    if (carrinhoNaMemoria.length > 0) {
+        
+        // Esconde o texto de "carrinho vazio"
+        mensagemVazio.style.display = "none";
+
+        // Passa por CADA perfume salvo na memória e desenha na tela
+        carrinhoNaMemoria.forEach(produto => {
+            
+            // Criamos a estrutura HTML do produto preenchida com as variáveis
+            const itemHTML = `
+                <div class="item-carrinho">
+                    <img src="${produto.imagem}" alt="${produto.nome}">
+                    <div class="item-carrinho-info">
+                        <h3>${produto.nome}</h3>
+                        <p>${produto.tamanho}</p>
+                    </div>
+                    <span class="item-carrinho-preco">R$ ${produto.preco.toFixed(2)}</span>
+                </div>
+            `;
+            
+            // Injeta o HTML criado dentro da nossa Div contêiner
+            containerCarrinho.innerHTML += itemHTML;
+        });
+    }
+}

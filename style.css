@@ -8,6 +8,21 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.container-carrinho {
+    padding: 40px 10%;
+    text-align: center;
+}
+
 .logo h2, .footer-logo h3 {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
@@ -354,4 +369,40 @@ footer {
 .cartao a {
     text-decoration: none;
     color: inherit;
+}
+
+/* ========================================== */
+/* 9. PÁGINA DO CARRINHO                         */
+/* ========================================== */
+.item-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 20px 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.item-carrinho img {
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.item-carrinho-info {
+    flex: 1;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.item-carrinho-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+}
+
+.item-carrinho-preco {
+    font-weight: bold;
+    font-size: 1.1rem;
 }
