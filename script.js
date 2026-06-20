@@ -98,39 +98,64 @@ if (botaoComprar && produtoEscolhido) {
     });
 }
 
-// ==========================================
-// RENDERIZAÇÃO DA PÁGINA DO CARRINHO
-// ==========================================
+// Renderiza os produtos no carrinho, calcula totais e gerencia ações (remover/finalizar)
 const containerCarrinho = document.querySelector(".itens-carrinho");
 const mensagemVazio = document.getElementById("mensagem-vazio");
+const resumoCarrinho = document.querySelector(".resumo-carrinho");
+const spanValorTotal = document.getElementById("valor-total");
 
-// Só roda se estivermos na página do carrinho
 if (containerCarrinho) {
     let carrinhoNaMemoria = JSON.parse(localStorage.getItem("carrinhoFlavor")) || [];
 
-    // Verifica se a mochila tem algum item dentro
     if (carrinhoNaMemoria.length > 0) {
-        
-        // Esconde o texto de "carrinho vazio"
         mensagemVazio.style.display = "none";
+        if (resumoCarrinho) resumoCarrinho.style.display = "block";
 
-        // Passa por CADA perfume salvo na memória e desenha na tela
+        let somaTotal = 0;
+
         carrinhoNaMemoria.forEach(produto => {
-            
-            // Criamos a estrutura HTML do produto preenchida com as variáveis
             const itemHTML = `
                 <div class="item-carrinho">
                     <img src="${produto.imagem}" alt="${produto.nome}">
                     <div class="item-carrinho-info">
                         <h3>${produto.nome}</h3>
                         <p>${produto.tamanho}</p>
+                        <button class="btn-remover" data-id="${produto.id}">Remover</button>
                     </div>
                     <span class="item-carrinho-preco">R$ ${produto.preco.toFixed(2)}</span>
                 </div>
             `;
-            
-            // Injeta o HTML criado dentro da nossa Div contêiner
             containerCarrinho.innerHTML += itemHTML;
+            somaTotal += produto.preco;
+        });
+
+        if (spanValorTotal) {
+            spanValorTotal.innerText = `R$ ${somaTotal.toFixed(2)}`;
+        }
+    }
+
+    // Gerencia o clique no botão de remover item específico
+    containerCarrinho.addEventListener("click", (evento) => {
+        if (evento.target.classList.contains("btn-remover")) {
+            const idProduto = evento.target.getAttribute("data-id");
+            
+            const index = carrinhoNaMemoria.findIndex(p => p.id === idProduto);
+            if (index !== -1) {
+                carrinhoNaMemoria.splice(index, 1);
+                localStorage.setItem("carrinhoFlavor", JSON.stringify(carrinhoNaMemoria));
+                window.location.reload(); 
+            }
+        }
+    });
+
+    // Gerencia o clique no botão de finalizar pedido
+    const btnFinalizar = document.querySelector(".resumo-carrinho .botao-comprar-grande");
+    
+    if (btnFinalizar) {
+        btnFinalizar.addEventListener("click", () => {
+            localStorage.removeItem("carrinhoFlavor");
+            alert("Pedido finalizado com sucesso! Obrigado pela compra.");
+            window.location.href = "index.html";
         });
     }
 }
