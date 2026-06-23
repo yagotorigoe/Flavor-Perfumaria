@@ -6,7 +6,7 @@ atualizarContadorCarrinho();
 // Extrai o ID da URL para buscar o produto correspondente no banco de dados
 const parametros = new URLSearchParams(window.location.search);
 const idProduto = parametros.get("id");
-const produtoEscolhido = bancoDeProdutos.find(produto => produto.id === idProduto);
+const produtoEscolhido = bancoDeProdutos.find(p => p.id === idProduto);
 
 const botaoComprar = document.querySelector(".botao-comprar-grande");
 
