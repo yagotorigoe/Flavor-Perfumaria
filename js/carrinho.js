@@ -1,4 +1,5 @@
 import { atualizarContadorCarrinho } from "./carrinhoUtils.js";
+import { mostrarToast } from "./toast.js";
 
 atualizarContadorCarrinho();
 
@@ -90,8 +91,11 @@ if (containerCarrinho) {
     if (btnFinalizar) {
         btnFinalizar.addEventListener("click", () => {
             localStorage.removeItem("carrinhoFlavor");
-            alert("Pedido finalizado com sucesso! Obrigado pela compra.");
-            window.location.href = "index.html";
+            mostrarToast("Pedido finalizado com sucesso! Obrigado pela compra.");
+            
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 3000);
         });
     }
 }

@@ -1,5 +1,6 @@
 import { bancoDeProdutos } from "./database.js";
 import { atualizarContadorCarrinho } from "./carrinhoUtils.js";
+import { mostrarToast } from "./toast.js";
 
 atualizarContadorCarrinho();
 
@@ -33,6 +34,6 @@ if (produtoEscolhido && botaoComprar) {
         localStorage.setItem("carrinhoFlavor", JSON.stringify(carrinhoNaMemoria));
         
         atualizarContadorCarrinho();
-        alert(`${produtoEscolhido.nome} foi adicionado ao carrinho!`);
+        mostrarToast(`${produtoEscolhido.nome} foi adicionado ao carrinho!`);
     });
 }

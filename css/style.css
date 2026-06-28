@@ -432,3 +432,32 @@ footer {
     color: #cc0000;
     text-decoration: underline;
 }
+
+/* Componente: Toast Notification */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.toast {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 15px 25px;
+    border-radius: 4px;
+    border-left: 5px solid #d4af37;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(120%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast.mostrar {
+    transform: translateX(0);
+    opacity: 1;
+}
