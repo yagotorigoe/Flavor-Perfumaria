@@ -14,6 +14,10 @@ body {
     min-height: 100vh;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 main {
     flex: 1;
 }
@@ -122,13 +126,13 @@ header nav a {
 }
 
 .cartao {
-    border: 1px solid #e0e0e0; 
+    border: 1px solid #e0e0e0;
     padding: 20px;
-    border-radius: 8px; 
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px; 
+    justify-content: space-between;
+    height: 100%;
 }
 
 .cartao img {
@@ -145,29 +149,39 @@ header nav a {
     cursor: pointer;
 }
 
+.cartao h3 {
+    min-height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .preco {
     font-weight: bold;
     font-size: 1.3rem;
     color: #1a1a1a;
+    margin-top: auto;
 }
 
 /* ========================================== */
 /* 5. BOTÕES PADRÃO                           */
 /* ========================================== */
-.cartao button {
-    width: 100%; 
-    padding: 12px;
+.cartao .botao-mais-detalhes {
+    display: block;
+    text-align: center;
+    text-decoration: none;
     background-color: #1a1a1a;
     color: #ffffff;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
+    padding: 17px 40px;
     font-weight: bold;
-    transition: 0.3s; 
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+    margin-top: 15px;
 }
 
-.cartao button:hover {
-    background-color: #444444;
+.cartao .botao-mais-detalhes:hover {
+    background-color: #333333;
 }
 
 .carrinho {
@@ -200,7 +214,8 @@ footer {
     margin-bottom: 10px;
 }
 
-.footer-links h4, .footer-contato h4 {
+.footer-links h4,
+.footer-contato h4 {
     margin-bottom: 15px;
     color: #b3b3b3;
 }
@@ -241,8 +256,9 @@ footer {
     margin: 0 auto;
 }
 
-.galeria, .info-compra {
-    flex: 1; 
+.galeria,
+.info-compra {
+    flex: 1;
 }
 
 .galeria img {
